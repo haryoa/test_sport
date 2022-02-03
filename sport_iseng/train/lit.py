@@ -68,7 +68,7 @@ class LitImageClassifier(LightningModule):
         """
         if self.lit_args.model_name == "effnetb0":
             self.feature_shape = 1000
-            if self.lit_args.is_pretrained:
+            if not self.lit_args.is_pretrained:
                 self.backbone = EfficientNet.from_name("efficientnet-b0")
             else:
                 self.backbone = EfficientNet.from_pretrained("efficientnet-b0")
@@ -96,8 +96,9 @@ class LitImageClassifier(LightningModule):
         loss = F.cross_entropy(y_hat, y)
         self.acc_score(y_hat, y)
         self.f1_score(y_hat, y)
+        self.log("train_loss", loss, on_step=True, on_epoch=False)
         self.log("train_acc", self.acc_score, on_step=True, on_epoch=False)
-        self.log("train_f1", self.f1_score, on_step=True, on_epoch=False)
+        self.log("train_f1", self.f1_score, on_step=True, on_epoch=False, prog_bar=True)
         return loss
 
     def training_epoch_end(self, outputs):  # type: ignore
@@ -111,7 +112,7 @@ class LitImageClassifier(LightningModule):
         self.acc_score(y_hat, y)
         self.f1_score(y_hat, y)
         self.log("val_acc", self.acc_score, on_step=True, on_epoch=True)
-        self.log("val_f1", self.f1_score, on_step=True, on_epoch=True)
+        self.log("val_f1", self.f1_score, on_step=True, on_epoch=True, prog_bar=True)
         self.log("val_loss", loss, on_step=True, on_epoch=True)
         return {"val_loss": loss}
 
