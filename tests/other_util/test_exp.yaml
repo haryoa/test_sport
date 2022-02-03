@@ -1,0 +1,24 @@
+data:
+  data_csv: "tests/other_util/data_train.csv"
+  extracted: ["train", "valid", "test"]
+  base_dir: "tests"
+data_config:
+  train_batch_size: 2
+  dev_batch_size: 2
+modeling:
+  # See https://pytorch-lightning.readthedocs.io/en/stable/api/pytorch_lightning.callbacks.early_stopping.html
+  early_stopping_cfg:
+    monitor: val_loss
+    patience: 3
+    mode: min
+  # See https://pytorch-lightning.readthedocs.io/en/latest/extensions/generated/pytorch_lightning.callbacks.ModelCheckpoint.html
+  model_checkpoint_cfg:
+    dirpath: "outputs/test/out_1/"
+    filename: "{epoch}-{val_loss:.4f}-{val_f1:.4f}"
+  # See https://pytorch-lightning.readthedocs.io/en/stable/api/pytorch_lightning.trainer.trainer.html
+  trainer_cfg:
+    max_epochs: 2
+  model_cfg:
+    model_name: effnetb0
+    is_pretrained: false
+    learning_rate: 0.001

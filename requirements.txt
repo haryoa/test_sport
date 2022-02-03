@@ -1,0 +1,7 @@
+albumentations==1.1.0
+efficientnet_pytorch==0.7.1
+numpy==1.21.2
+opencv_python_headless==4.5.5.62
+pytorch_lightning==1.5.9
+torch==1.10.2
+torchmetrics==0.7.0

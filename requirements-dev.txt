@@ -1,0 +1,8 @@
+pytest>=6.2.5
+black>=21.12b0
+pipreqs>=0.4.11
+pylint
+mypy
+isort
+flake8>=4.0.1
+pre-commit

@@ -1,0 +1,7 @@
+filepaths,labels,data set
+dummy_data/img_0.jpg,basketball,train
+dummy_data/img_1.jpg,basketball,valid
+dummy_data/img_2.jpg,basketball,valid
+dummy_data/img_3.jpg,tennis,test
+dummy_data/img_4.jpg,tennis,train
+dummy_data/img_5.jpg,tennis,valid
