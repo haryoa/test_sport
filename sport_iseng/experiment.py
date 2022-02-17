@@ -80,7 +80,7 @@ class ExperimentRunner:
             train_imgs=dict_extracted["train"]["image_paths"],
             train_labels=dict_extracted["train"]["labels"],
             dev_imgs=dict_extracted["valid"]["image_paths"],
-            dev_labels=dict_extracted["valid"]["image_paths"],
+            dev_labels=dict_extracted["valid"]["labels"],
             processer=effnet_data_processer,
             train_batch_size=self.data_config_args.train_batch_size,
             dev_batch_size=self.data_config_args.dev_batch_size,
